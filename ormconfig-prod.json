@@ -1,6 +1,6 @@
 {
    "type": "postgres",
-   "host": "localhost",
+   "host": "syriusdb.clrbhlis78os.us-east-1.rds.amazonaws.com",
    "port": 5432,
    "username": "postgres",
    "password": "adot2022",
