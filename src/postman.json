@@ -1,0 +1,1332 @@
+{
+	"info": {
+		"_postman_id": "a1048152-b499-4a03-ad84-1479eb53843e",
+		"name": "API SigaCred",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"usuario\",\r\n    \"password\": \"senha\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3002/login"
+					},
+					"response": [
+						{
+							"name": "Login com Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"financeirocle@superitalo.com.br\",\r\n    \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3002/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "427"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ab-9BPGlxhNNQTtXVdp1yoXCmQP/iE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 18:57:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"sucesso\", //mensagem de sucesso\n    \"token\": \"bearer-token\" //token bearer, deve ser enviado no formato \"Bearer 'token'\"\n}"
+						},
+						{
+							"name": "Login Inválido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"usuario\",\r\n    \"password\": \"senha\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3002/login"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-ix1whLB5Vr60a2zSj5i/bAJBWOI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 20:00:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"usuário ou senha inválidos\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Seção de login da API, pode ser logado via usuário do AUTHBASE(aplicativos) e pelo usuário do USUARIOS(usuários internos)."
+		},
+		{
+			"name": "Cartão",
+			"item": [
+				{
+					"name": "Lista Cartões",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3002/cartao"
+					},
+					"response": [
+						{
+							"name": "Lista Cartões",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3002/cartao"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27508"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b74-/ta0PC5siqIVmK3GLLAXQ9iGdTw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:05:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"CODCARTAO\": \"num-cartao\", //Número do cartão do cliente\n        \"CODCLI\": \"cod-cliente\" //Código do cliente\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Detalhes do Cartão",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/cartao/:cartao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"cartao",
+								":cartao"
+							],
+							"variable": [
+								{
+									"key": "cartao",
+									"value": "6392791067000891"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Detalhes do Cartão",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3002/cartao/:cartao",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3002",
+									"path": [
+										"cartao",
+										":cartao"
+									],
+									"variable": [
+										{
+											"key": "cartao",
+											"value": "6392791067000891"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-sJLqEeMx5TbhUzgXbSdCJBku48E\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:04:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"CODCARTAO\": \"numero-cartao\", //número do cartão do cliente\n    \"CODCLI\": \"cod-cliente\" //código do cliente\n}"
+						}
+					]
+				}
+			],
+			"description": "Seção que retorna os dados do cartão.",
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "bearer-token"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Lista de Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3002/cliente"
+					},
+					"response": [
+						{
+							"name": "Lista de Clientes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3002/cliente"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43237"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a8e5-nMC6EsTNkblOplN5Z0WGiVKyNnI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:07:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"CODIGO\": \"cod-cliente\", //código do cliente\n        \"NOME\": \"nome-cliente\", //nome do cliente\n        \"LIMITECONV\": 300, //saldo do cliente\n        \"UNCAD\": \"001\" //id da loja que o cliente faz parte\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Detalhes do Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/cliente/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"cliente",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "10000036"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Detalhes do Cliente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3002/cliente/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3002",
+									"path": [
+										"cliente",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "10000036"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-Zz8BCSFZSAoIh9GWyseAkOp6SMU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:09:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"CODIGO\": \"cod-cliente\", //código do cliente\n    \"NOME\": \"nome-cliente\", //nome do cliente\n    \"LIMITECONV\": 300, //limite do cliente\n    \"UNCAD\": \"001\" //loja que o cliente está cadastrado\n}"
+						}
+					]
+				}
+			],
+			"description": "Retorna os dados do cliente. De acordo com o código.",
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "bearer-token"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Loja",
+			"item": [
+				{
+					"name": "Lista de Lojas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3002/loja"
+					},
+					"response": [
+						{
+							"name": "Lista de Lojas",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3002/loja"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1359"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54f-T0iOMdTAtkhCiWFuu7GeKdVcnag\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:10:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"CODIGO\": \"001\", //Código da loja\n        \"NOME\": \"Restaurante Siga/Rp\", //Nome da empresa\n        \"RAZAOSOCIAL\": \"Restaurante Siga/Rp\", //Razão social da empresa\n        \"ENDERECO\": \"Rodovia Prt 280 - Km 121,5\", //Endereço da empresa\n        \"CNPJ\": null //CNPJ da empresa\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Detalhes da Loja",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/loja/:codloja",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"loja",
+								":codloja"
+							],
+							"variable": [
+								{
+									"key": "codloja",
+									"value": "001",
+									"description": "Código da loja"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Detalhes da Loja",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3002/loja/:codloja",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3002",
+									"path": [
+										"loja",
+										":codloja"
+									],
+									"variable": [
+										{
+											"key": "codloja",
+											"value": "001"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "133"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"85-KNjOiwjVWMBAr8waKbRD2JFOinE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:11:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"CODIGO\": \"001\", //Código da empresa\n    \"NOME\": \"Restaurante Siga/Rp\", //Nome da empresa\n    \"RAZAOSOCIAL\": \"Restaurante Siga/Rp\", //Razão social da empresa\n    \"ENDERECO\": \"Rodovia Prt 280 - Km 121,5\", //Endereço da empresa\n    \"CNPJ\": null //Cnpj da empresa\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "bearer-token"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Transação",
+			"item": [
+				{
+					"name": "Transação por número",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/transacao/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"transacao",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "21012101020040959",
+									"description": "Pode ser número ou uma parte de número."
+								}
+							]
+						},
+						"description": "Transações por número, pode ser requisitada com um número de transação inteiro, ou pode ser usada como busca, em SQL `LIKE %:id%`"
+					},
+					"response": [
+						{
+							"name": "Transação por número",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3002/transacao/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3002",
+									"path": [
+										"transacao",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "21012101020040959"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "185"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b9-Op4fv+T7Itj/knpxlGUGHeKcN7A\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:13:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"TRANSACAO\": \"num-transacao\",\n        \"CARTAO\": \"num-cartao\",\n        \"SITTRANS\": \"ER\", //Situação, ER = Efetivado Retaguarda, EP = Efetivado PDV, CR = Cancelada retaguarda, CP = Cancelada PDV\n        \"VALOR\": 3.5, //Valor da transação\n        \"DTVENDA\": \"2021-01-21T16:05:33.000Z\", //Data da venda\n        \"FECHAMENTO\": null, //Se a fatura foi fechada ou não.\n        \"DCTO\": \"dcto\", //Número do Documento\n        \"CODCLI\": \"cod-cliente\" //Código do Cliente da transação\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Transação por cartão",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/transacao/cartao/:numero",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"transacao",
+								"cartao",
+								":numero"
+							],
+							"variable": [
+								{
+									"key": "numero",
+									"value": "6392791067000301"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Transação por cartão",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3002/transacao/cartao/:numero",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3002",
+									"path": [
+										"transacao",
+										"cartao",
+										":numero"
+									],
+									"variable": [
+										{
+											"key": "numero",
+											"value": "6392791067000301"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "605454"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93d0e-ios5iFTcbsRnWDem90C21noe9pk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:18:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"TRANSACAO\": \"num-transacao\",\n        \"CARTAO\": \"num-cartao\",\n        \"SITTRANS\": \"ER\", //Situação, ER = Efetivado Retaguarda, EP = Efetivado PDV, CR = Cancelada retaguarda, CP = Cancelada PDV\n        \"VALOR\": 3.5, //Valor da transação\n        \"DTVENDA\": \"2021-01-21T16:05:33.000Z\", //Data da venda\n        \"FECHAMENTO\": null, //Se a fatura foi fechada ou não.\n        \"DCTO\": \"dcto\", //Número do Documento\n        \"CODCLI\": \"cod-cliente\" //Código do Cliente da transação\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Transação por data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3002/transacao/data/:inicial/:final",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3002",
+							"path": [
+								"transacao",
+								"data",
+								":inicial",
+								":final"
+							],
+							"variable": [
+								{
+									"key": "inicial",
+									"value": "2021-01-01 00:00:00"
+								},
+								{
+									"key": "final",
+									"value": "2021-02-01 23:59:59"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Transação por data",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3002/transacao/data/:inicial/:final",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3002",
+									"path": [
+										"transacao",
+										"data",
+										":inicial",
+										":final"
+									],
+									"variable": [
+										{
+											"key": "inicial",
+											"value": "2021-01-01 00:00:00"
+										},
+										{
+											"key": "final",
+											"value": "2021-02-01 23:59:59"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "202728"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"317e8-JqGYGgPYb/ei+gXWbNeHNmQL6MA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:19:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n       \"TRANSACAO\": \"num-transacao\",\n        \"CARTAO\": \"num-cartao\",\n        \"SITTRANS\": \"ER\", //Situação, ER = Efetivado Retaguarda, EP = Efetivado PDV, CR = Cancelada retaguarda, CP = Cancelada PDV\n        \"VALOR\": 3.5, //Valor da transação\n        \"DTVENDA\": \"2021-01-21T16:05:33.000Z\", //Data da venda\n        \"FECHAMENTO\": null, //Se a fatura foi fechada ou não.\n        \"DCTO\": \"dcto\", //Número do Documento\n        \"CODCLI\": \"cod-cliente\" //Código do Cliente da transação\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "bearer-token"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Remessa",
+			"item": [
+				{
+					"name": "Serasa",
+					"item": [
+						{
+							"name": "Lista Serasa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3002/remessa/serasa"
+							},
+							"response": [
+								{
+									"name": "Lista Serasa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3002/remessa/serasa"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "44023"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"abf7-wWGrW6jN31cg8usfEPMNJ/CjRAg\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Feb 2021 19:21:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"REMESSA\": \"000785\",\n        \"DATAMVTO\": \"2010-10-23\",\n        \"DATABX\": \"2020-11-24\",\n        \"DATAINC\": \"2010-10-23\",\n        \"CLIE_CODIGO\": \"10009241\",\n        \"CONTRATO\": \"1051100092410011\",\n        \"EMPR_BIN\": \"1051\",\n        \"FATURA\": 118473,\n        \"VALOR\": 169.5,\n        \"DATAVCTO\": \"2010-10-13\",\n        \"STATUS\": \"B\",\n        \"STATUSRET\": \"N\",\n        \"RETORNO\": \"Inclusao Processada\",\n        \"CLIE_NOME\": \"Marcelo Dos Santos Leopoldino\",\n        \"EMPR_NOME\": \"Supermercado Irani\",\n        \"DTHRREMESSA\": \"25/10/10 08:51\",\n        \"REMESSABX\": \"003016\",\n        \"DTHRREMESSABX\": \"25/11/20 13:55\",\n        \"NUMBAIXAS\": null\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Cabeçalho Serasa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3002/remessa/serasa/cabecalho"
+							},
+							"response": [
+								{
+									"name": "Cabeçalho Serasa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3002/remessa/serasa/cabecalho"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "203"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"cb-E/Wcqp79eOFztqenzTUuZeroIkg\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Feb 2021 19:23:56 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"PARA_SER_CNPJ\": \"04966359000179\",\n    \"PARA_SER_NOMEEMPR\": \"Sigacred Administradora\",\n    \"PARA_SER_DDD\": \"46\",\n    \"PARA_SER_FONE\": \"32268090\",\n    \"PARA_SER_RAMAL\": \"8063\",\n    \"PARA_SER_RESP\": \"Fabiane Dlugosz\",\n    \"PARA_SER_CT\": \"1\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Credores Serasa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3002/remessa/serasa/credores"
+							},
+							"response": [
+								{
+									"name": "Credores Serasa",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3002/remessa/serasa/credores"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "132398"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2052e-bHcQDQNYyDjHL9e1OG0Hoihkau0\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Feb 2021 19:26:07 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"CRED_BIN\": \"1015\", //Bin do credor\n        \"CRED_NOME\": \"Nome da Empresa\", //Razão social do credor\n        \"CRED_FANTASIA\": \"Nome Fantasia\", //Nome Fantasia\n        \"CRED_CNPJ\": \"numero-cnpj\", //CNPJ\n        \"CRED_ENDERECO\": \"Av Paulista, 123\", //Endereço\n        \"CRED_BAIRRO\": \"Centro\", //Bairro\n        \"CRED_CEP\": \"85550000\", //CEP\n        \"CRED_CIDADE\": \"São Paulo\", //Cidade\n        \"CRED_UF\": \"SP\", //UF\n        \"CRED_FONE\": \"11 3232126\", //Telefone com o ddd\n        \"CRED_STATUS\": \"A\", //Status de cred\n        \"CRED_STATUSRET\": \"N\", //Status de ret\n        \"CRED_RETORNO\": \"Inclusao Processada Lote 0014\", //Inclusão processada\n        \"CRED_RAMAL\": null, //Ramal\n        \"CRED_CONTATO\": null //Contato\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "SPC",
+					"item": [
+						{
+							"name": "Lista SPC",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3002/remessa/spc"
+							},
+							"response": [
+								{
+									"name": "Lista SPC",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3002/remessa/spc"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "23454"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"5b9e-aCKp3QrDEn4I6RkdbVHVPVxHls8\""
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Feb 2021 19:25:11 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"REMESSA\": \"01659\", //Número da remessa\n        \"REMESSABX\": null, //Se foi baixado\n        \"DATAMVTO\": \"2020-11-22T03:00:00.000Z\", //Data do movimento\n        \"DATABX\": \"2020-11-25T03:00:00.000Z\", //Data da baixa\n        \"DATAINC\": \"2020-11-22T03:00:00.000Z\", //Data da inclusão\n        \"CLIE_CODIGO\": \"10008268\", //Código do Cliente\n        \"CLIE_NOME\": \"Nome do Cliente\", //Nome do cliente\n        \"FATURA\": 531522, //Número da fatura\n        \"DATAVCTO\": \"2020-11-18T03:00:00.000Z\", //Data do vencimento\n        \"VALOR\": 614.73, //Valor\n        \"CONTRATO\": \"1018100082680016\", //Número do contrato\n        \"EMPR_BIN\": \"1018\", //Bin da empresa\n        \"STATUS\": \"B\",\n        \"STATUSRET\": \"N\",\n        \"RETORNO\": \"Inclusao Processada\", //Retorno\n        \"EMPR_NOME\": \"Empresa\" //Nome da empresa\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista SPC",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3002/remessa/spc"
+					},
+					"response": [
+						{
+							"name": "Lista SPC",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3002/remessa/spc"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23454"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b9e-aCKp3QrDEn4I6RkdbVHVPVxHls8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Feb 2021 19:23:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"REMESSA\": \"01659\",\n        \"REMESSABX\": null,\n        \"DATAMVTO\": \"2020-11-22T03:00:00.000Z\",\n        \"DATABX\": \"2020-11-25T03:00:00.000Z\",\n        \"DATAINC\": \"2020-11-22T03:00:00.000Z\",\n        \"CLIE_CODIGO\": \"10008268\",\n        \"CLIE_NOME\": \"Alexandre Alcides Branco\",\n        \"FATURA\": 531522,\n        \"DATAVCTO\": \"2020-11-18T03:00:00.000Z\",\n        \"VALOR\": 614.73,\n        \"CONTRATO\": \"1018100082680016\",\n        \"EMPR_BIN\": \"1018\",\n        \"STATUS\": \"B\",\n        \"STATUSRET\": \"N\",\n        \"RETORNO\": \"Inclusao Processada\",\n        \"EMPR_NOME\": \"Supermercado Molicenter \"\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "bearer-token"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}

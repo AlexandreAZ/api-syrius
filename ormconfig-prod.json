@@ -1,0 +1,24 @@
+{
+   "type": "postgres",
+   "host": "syriusdb.clrbhlis78os.us-east-1.rds.amazonaws.com",
+   "port": 5432,
+   "username": "postgres",
+   "password": "adot2022",
+   "database": "syriusdb",
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "build/entity/**/*.js"
+   ],
+   "migrations": [
+      "build/migration/**/*.js"
+   ],
+   "subscribers": [
+      "build/subscriber/**/*.js"
+   ],
+   "cli": {
+      "entitiesDir": "build/entity",
+      "migrationsDir": "build/migration",
+      "subscribersDir": "build/subscriber"
+   }
+}
