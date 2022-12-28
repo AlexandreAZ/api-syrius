@@ -28,6 +28,19 @@ export class UserController {
         return user
     }
 
+    async he(request: Request,  response: Response) { 
+        try {
+          console.log(request.params.id) 
+          return [
+            200,
+            'OK'
+          ]
+        } catch (error) {
+          response.status(500).send(error);
+        }
+        
+      }  
+
 
     getSecondPart(str) {
         return str.split('@')[1].toUpperCase();

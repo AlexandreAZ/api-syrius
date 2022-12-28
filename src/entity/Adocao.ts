@@ -17,9 +17,17 @@ export class Adocao extends BaseEntity {
   @Column("varchar")
   ADOTANTE: string;
 
+  @Field(() => Number, { nullable: true })
+  @Column("integer")
+  ADOTANTE_ID: number;
+
   @Field(() => String, { nullable: true })
   @Column("varchar")
   PET: string;
+
+  @Field(() => Number, { nullable: true })
+  @Column("integer")
+  PET_ID: number;
 
   @Field(() => Date,  { nullable: true } )
   @Column("date")

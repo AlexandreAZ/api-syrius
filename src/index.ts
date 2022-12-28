@@ -5,13 +5,17 @@ import { buildSchema, NonEmptyArray } from "type-graphql";
 import express from "express"; 
 import swaggerUi from "swagger-ui-express";
 import cors from "cors"; 
+import https from "https";
+import fs from "fs";
 import { Request, Response } from "express"; 
 import { Routes } from "./routes";
 import { Resolvers } from "./resolvers"; 
+
 import bodyParser = require("body-parser");
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger_output.json"); 
- 
+const path = require('path')
+
 createConnection()
   .then(async () => {
     // create express app
@@ -52,10 +56,16 @@ createConnection()
     const port = 3000;
 
     app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-    app.listen(port);
+    //app.listen(port);
+
+    https.createServer({
+      cert: fs.readFileSync(path.join(__dirname, 'cert/certificate.crt')),
+      key: fs.readFileSync(path.join(__dirname, 'cert/private.key'))
+    }, 
+    app).listen(port);
 
     console.log(
-      `O servidor foi iniciado na porta ${port}. Abra http://localhost:${port}${server.graphqlPath} para ver os resultados.`
+      `O servidor foi iniciado na porta ${port}. Abra https://localhost:${port}${server.graphqlPath} para ver os resultados.`
     );
   })
   .catch((error) => console.log(error));

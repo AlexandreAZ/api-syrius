@@ -18,7 +18,13 @@ export const Routes = [
         route: "/API/login",
         controller: AuthController,
         action: "login"
-    }, {
+    }, 
+    {
+        method: "get",
+        route: "/health",
+        controller: UserController,
+        action: "he"
+    },{
     method: "get",
     route: "/users",
     controller: UserController,
@@ -48,6 +54,16 @@ export const Routes = [
         route: "/api/apps/cadastrapet/tipo",
         controller: TiposPetController,
         action: "getTipos"  
+},{
+    method: "post",
+        route: "/api/apps/cadastrapet/tipo/:id",
+        controller: TiposPetController,
+        action: "getTipoID"  
+},{
+    method: "post",
+        route: "/api/apps/cadastrapet/raca/:id",
+        controller: RacasController,
+        action: "getRacaID"  
 },{
     method: "post",
         route: "/api/apps/cadastrapet/pelagem",
@@ -125,6 +141,11 @@ export const Routes = [
         action: "getPets"  
 },{
     method: "post",
+        route: "/api/apps/pet/:id",
+        controller: CadastroController,
+        action: "getPetID"  
+},{
+    method: "post",
         route: "/api/apps/adocao/all",
         controller: AdotarController,
         action: "getAdocoes"  
@@ -148,6 +169,11 @@ export const Routes = [
         route: "/api/apps/adotante/all",
         controller: AdotantesController,
         action: "getAdotantes"  
+},{
+    method: "post",
+        route: "/api/apps/adotante/:id",
+        controller: AdotantesController,
+        action: "one"  
 },{
     method: "post",
         route: "/api/apps/estabelecimentos/all",

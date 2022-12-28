@@ -1,15 +1,12 @@
 import { getRepository } from "typeorm";
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import { Auth } from "../entity/Auth";
-import { Usuarios } from "../entity/Usuarios";
 import * as jwt from "jsonwebtoken";
-import * as bcrypt from "bcrypt"; 
 import * as crypto from "crypto-js";
 import config from "../config/config"; 
 
 export class AuthController {
   private authRepository = getRepository(Auth);
-  private userRepository = getRepository(Usuarios);
 
   private readonly _secret: any = config.jwtSecret;
   
@@ -47,7 +44,7 @@ export class AuthController {
                   {
                       user       : user,
                       username   : username,
-                      accessToken: this._generateJWTToken(),
+                      accessToken: token,
                       tokenType  : 'bearer'
                   }
               ];

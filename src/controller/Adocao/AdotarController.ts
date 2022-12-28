@@ -30,9 +30,10 @@ export class AdotarController {
         //var resp = await this.cadastroRepository.save(dados);
 
         var sql = `INSERT INTO "`+diretorio+`"."ADOCAO"
-        ("BACKGROUND", "ADOTANTE", "PET", "DTADOCAO", "STATUS") 
+        ("BACKGROUND", "ADOTANTE", "PET", "DTADOCAO", "STATUS", "ADOTANTE_ID", "PET_ID") 
         VALUES ('`+dados['BACKGROUND']+`','`+dados['ADOTANTE']+`', '`+dados['PET']+`',
-                '`+dados['DTADOCAO']+`', '`+dados['STATUS']+`')`
+                '`+dados['DTADOCAO']+`', '`+dados['STATUS']+`', '`+dados['ADOTANTE_ID']+`', 
+                '`+dados['PET_ID']+`')`
 
          //console.log(sql)
          

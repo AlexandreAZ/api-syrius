@@ -21,6 +21,23 @@ export class RacasController {
       } 
     }
 
+    async getRacaID(request: Request, response: Response) {
+
+      try { 
+        this.cadastroRepository.metadata.tablePath = request.body['diretorio'] + ".CONFRACA";
+        this.cadastroRepository.metadata.tableMetadataArgs.schema = request.body['diretorio'];
+   
+        var resp = await this.cadastroRepository
+        .findOneBy({ ID: parseInt(request.params.id)});
+    
+        if (!resp) return { message: "Raça não encontrada" };
+        return resp;
+      } catch (error) {
+        console.log(error);
+        response.status(500).send(error);
+      } 
+    }
+
     async upRaca(request: Request, response: Response){
       try {
         var dados = request.body['raca'];

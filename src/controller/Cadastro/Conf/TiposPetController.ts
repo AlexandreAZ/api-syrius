@@ -21,6 +21,23 @@ export class TiposPetController {
       } 
     }
 
+    async getTipoID(request: Request, response: Response) {
+
+      try { 
+        this.cadastroRepository.metadata.tablePath = request.body['diretorio'] + ".CONFTIPOSPET";
+        this.cadastroRepository.metadata.tableMetadataArgs.schema = request.body['diretorio'];
+   
+        var resp = await this.cadastroRepository
+        .findOneBy({ ID: parseInt(request.params.id)});
+    
+        if (!resp) return { message: "Tipo não encontrado" };
+        return resp;
+      } catch (error) {
+        console.log(error);
+        response.status(500).send(error);
+      } 
+    }
+
     async upTipo(request: Request, response: Response){
       try {
         var dados = request.body['tipos'];

@@ -5,7 +5,7 @@
    "username": "postgres",
    "password": "adot2022",
    "database": "syriusdb",
-   "synchronize": true,
+   "synchronize": false,
    "logging": false,
    "entities": [
       "build/entity/**/*.js"

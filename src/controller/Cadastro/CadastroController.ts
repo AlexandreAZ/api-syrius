@@ -44,12 +44,11 @@ export class CadastroController {
         this.cadastroRepository.metadata.tablePath = request.body['diretorio'] + ".CADPET";
         this.cadastroRepository.metadata.tableMetadataArgs.schema = request.body['diretorio'];
    
-        /*var resp = await this.cadastroRepository
-        .findOne(request.params.id);
-        
-        console.log(resp);
+        var resp = await this.cadastroRepository
+        .findOneBy({ ID: parseInt(request.params.id)});
+    
         if (!resp) return { message: "PET não encontrado" };
-        return resp;*/
+        return resp;
       } catch (error) {
         console.log(error);
         response.status(500).send(error);
