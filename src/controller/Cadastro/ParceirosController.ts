@@ -32,7 +32,8 @@ export class ParceirosController {
 
         var resp = await this.parceirosRepository
         .query(`UPDATE "`+diretorio+`"."CADPARC" 
-                SET "NOME" = '`+dados['NOME']+`',
+                SET "AVATAR" = '`+dados['AVATAR']+`',
+                    "NOME" = '`+dados['NOME']+`',
                     "BACKGROUND" = '`+dados['BACKGROUND']+`',
                     "TELEFONE" = '`+dados['TELEFONE']+`',
                     "CNPJ" = '`+dados['CNPJ']+`',
@@ -48,8 +49,8 @@ export class ParceirosController {
 
           var resp = await this.parceirosRepository
           .query(`INSERT INTO "`+diretorio+`"."CADPARC"
-          ("BACKGROUND", "NOME", "TELEFONE","CNPJ", "CEP", "ENDERECO", "CIDADE", "BAIRRO", "UF", "NUMERO") 
-          VALUES ('`+dados['BACKGROUND']+`','`+dados['NOME']+`', '`+dados['TELEFONE']+`',
+          ("BACKGROUND", "AVATAR", "NOME", "TELEFONE","CNPJ", "CEP", "ENDERECO", "CIDADE", "BAIRRO", "UF", "NUMERO") 
+          VALUES ('`+dados['BACKGROUND']+`','`+dados['AVATAR']+`','`+dados['NOME']+`', '`+dados['TELEFONE']+`',
                   '`+dados['CNPJ']+`', '`+dados['CEP']+`', '`+dados['ENDERECO']+`', 
                   '`+dados['CIDADE']+`', '`+dados['BAIRRO']+`','`+dados['UF']+`','`+dados['NUMERO']+`')`)
          } 

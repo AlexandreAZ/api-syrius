@@ -48,7 +48,8 @@ export class AdotantesController {
 
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADADOT" 
-                SET "NOME" = '`+dados['NOME']+`',
+                SET "AVATAR" = '`+dados['AVATAR']+`', 
+                    "NOME" = '`+dados['NOME']+`',
                     "BACKGROUND" = '`+dados['BACKGROUND']+`',
                     "TELEFONE" = '`+dados['TELEFONE']+`',
                     "CELULAR" = '`+dados['CELULAR']+`',
@@ -65,9 +66,9 @@ export class AdotantesController {
 
           var resp = await this.cadastroRepository
           .query(`INSERT INTO "`+diretorio+`"."CADADOT"
-          ("BACKGROUND", "NOME", "TELEFONE", "CELULAR", "CEP", "ENDERECO", "CIDADE", 
+          ("BACKGROUND", "AVATAR", "NOME", "TELEFONE", "CELULAR", "CEP", "ENDERECO", "CIDADE", 
            "BAIRRO", "UF", "NUMERO", "EMAIL") 
-          VALUES ('`+dados['BACKGROUND']+`',
+          VALUES ('`+dados['BACKGROUND']+`','`+dados['AVATAR']+`',
                   '`+dados['NOME']+`', '`+dados['TELEFONE']+`',
                   '`+dados['CELULAR']+`', '`+dados['CEP']+`',
                   '`+dados['ENDERECO']+`', '`+dados['CIDADE']+`', 

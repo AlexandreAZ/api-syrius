@@ -65,7 +65,7 @@ createConnection()
     app).listen(port);
 
     console.log(
-      `O servidor foi iniciado na porta ${port}. Abra https://localhost:${port}${server.graphqlPath} para ver os resultados.`
+      `O servidor foi iniciado na porta ${port}. Abra https://api.sistemasyrius.com.br:${port}${server.graphqlPath} para ver os resultados.`
     );
   })
   .catch((error) => console.log(error));

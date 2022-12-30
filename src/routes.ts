@@ -286,15 +286,19 @@ export const Routes = [
         controller: EstabelecimentosController,
         action: "upEst"  
 },{
-    method: "patch",
+        method: "patch",
         route: "/api/apps/adocao/adotar",
         controller: AdotarController,
         action: "upAdocao"  
 },{
-   
     method: "post",
     route: "/api/apps/adocao/statuspet",
     controller: CadastroController,
     action: "upStatus"  
+},{
+    method: "patch",
+    route: "/api/apps/cadastrapet/avatar",
+    controller: CadastroController,
+    action: "upAvatar"  
 }
 ]

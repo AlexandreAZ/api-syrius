@@ -1,6 +1,6 @@
 {
    "name": "api-syrius",
-   "version": "1.0.1",
+   "version": "1.0.2",
    "description": "Api syrius ORM. Com socket e http.",
    "devDependencies": {
       "@types/node": "^16.11.10",

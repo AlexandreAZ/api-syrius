@@ -11,7 +11,13 @@ export class AdotarController {
         this.cadastroRepository.metadata.tablePath = request.body['diretorio'] + ".ADOCAO";
         this.cadastroRepository.metadata.tableMetadataArgs.schema = request.body['diretorio'];
    
-        var resp = await this.cadastroRepository.find();
+        var resp = await this.cadastroRepository
+        .query(`SELECT A.*, 
+                B."AVATAR" AS "AAVATAR",
+                P."AVATAR" AS "PAVATAR" 
+                FROM "ONGADM"."ADOCAO" A
+                INNER JOIN  "ONGADM"."CADADOT" B ON A."ADOTANTE_ID" = B."ID"
+                INNER JOIN  "ONGADM"."CADPET" P ON A."PET_ID" = P."ID" `);
         
         if (!resp || resp.length === 0) return [];
         return resp;

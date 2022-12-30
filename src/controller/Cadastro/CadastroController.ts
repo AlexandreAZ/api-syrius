@@ -78,6 +78,29 @@ export class CadastroController {
       } 
     }
 
+    async upAvatar(request: Request, response: Response){
+      try {
+        var id = request.body['id'];
+        var diretorio = request.body['diretorio'];
+        this.cadastroRepository.metadata.tablePath = diretorio + ".CADPET"; 
+        this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
+        
+
+        console.log(diretorio);
+
+        /*var resp = await this.cadastroRepository
+        .query(`UPDATE "`+diretorio+`"."CADPET" 
+                SET "AVATAR" = 
+                WHERE "ID" = ` + id)
+        
+        if (!resp || resp.length === 0) return { message: "Não foi possivel atualizar o PET" };
+        return resp; */
+      } catch (error) {
+        console.log(error)
+        response.status(500).send(error);
+      } 
+    }
+
     async upPet(request: Request, response: Response){
       try {
         var dados = request.body['pet'];
@@ -86,11 +109,28 @@ export class CadastroController {
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
         //var resp = await this.cadastroRepository.save(dados);
 
-       // console.log(dados);
+        console.log(`UPDATE "`+diretorio+`"."CADPET" 
+        SET "AVATAR" = '`+dados['AVATAR']+`', 
+            "NOME" = '`+dados['NOME']+`', 
+            "PAI" = '`+dados['PAI']+`',
+            "MAE" = '`+dados['MAE']+`',
+            "TIPO" = '`+dados['TIPO']+`',
+            "RACA" = '`+dados['RACA']+`',
+            "CASTRADO" = '`+dados['CASTRADO']+`',
+            "NASCIMENTO" = '`+dados['NASCIMENTO']+`',
+            "COR" = '`+dados['COR']+`',
+            "OLHOS" = '`+dados['OLHOS']+`',
+            "PELAGEM" = '`+dados['PELAGEM']+`',
+            "PORTE" = '`+dados['PORTE']+`',
+            "TEMPERAMENTO" = '`+dados['TEMPERAMENTO']+`',
+            "FALECIDO" = '`+dados['FALECIDO']+`',
+            "ADOTADO" = '`+dados['ADOTADO']+`'
+        WHERE "ID" = ` + dados['ID']);
 
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADPET" 
-                SET "NOME" = '`+dados['NOME']+`', 
+                SET "AVATAR" = '`+dados['AVATAR']+`', 
+                    "NOME" = '`+dados['NOME']+`', 
                     "PAI" = '`+dados['PAI']+`',
                     "MAE" = '`+dados['MAE']+`',
                     "TIPO" = '`+dados['TIPO']+`',
@@ -110,9 +150,10 @@ export class CadastroController {
 
 
          var sql = `INSERT INTO "`+diretorio+`"."CADPET"
-         ("BACKGROUND", "NOME", "PAI", "MAE", "TIPO", "RACA", "CASTRADO", "NASCIMENTO", 
+         ("BACKGROUND", "AVATAR", "NOME", "PAI", "MAE", "TIPO", "RACA", "CASTRADO", "NASCIMENTO", 
            "COR", "OLHOS", "PELAGEM", "PORTE", "TEMPERAMENTO", "FALECIDO", "ADOTADO", "STATUS") 
-         VALUES ('`+dados['BACKGROUND']+`','`+dados['NOME']+`', '`+dados['PAI']+`',
+         VALUES ('`+dados['BACKGROUND']+`','`+dados['AVATAR']+`',
+                 '`+dados['NOME']+`','`+dados['PAI']+`',
                  '`+dados['MAE']+`', '`+dados['TIPO']+`',
                  '`+dados['RACA']+`', '`+dados['CASTRADO']+`',
                  '`+dados['NASCIMENTO']+`', '`+dados['COR']+`',
