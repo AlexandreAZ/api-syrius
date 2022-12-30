@@ -195,6 +195,11 @@ export const Routes = [
         controller: RacasController,
         action: "delRaca"  
 },{
+    method: "delete",
+        route: "/api/apps/adotante/del/:id/:diretorio",
+        controller: AdotantesController,
+        action: "delAdotante"  
+},{
    
     method: "post",
     route: "/api/auth/refresh-access-token",
