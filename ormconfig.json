@@ -1,9 +1,9 @@
 {
    "type": "postgres",
-   "host": "syriusdb.clrbhlis78os.us-east-1.rds.amazonaws.com",
+   "host": "syriusdb.cluster-ct8hb1y1sm6c.us-east-1.rds.amazonaws.com",
    "port": 5432,
    "username": "postgres",
-   "password": "adot2022",
+   "password": "adot2023",
    "database": "syriusdb",
    "synchronize": false,
    "logging": false,

@@ -25,6 +25,9 @@ export class AdotantesController {
       try {
         this.cadastroRepository.metadata.tablePath = request.body['diretorio'] + ".CADADOT";
         this.cadastroRepository.metadata.tableMetadataArgs.schema = request.body['diretorio'];
+
+
+        console.log(request.params);
         
         var resp = await this.cadastroRepository.findOneBy({ ID: parseInt(request.params.id)}); 
 
@@ -44,7 +47,7 @@ export class AdotantesController {
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
         //var resp = await this.cadastroRepository.save(dados);
 
-        //console.log(dados)
+        console.log(dados)
 
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADADOT" 

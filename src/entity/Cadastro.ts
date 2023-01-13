@@ -35,6 +35,10 @@ export class Cadastro extends BaseEntity {
 
   @Field(() => Number, { nullable: true })
   @Column("int")
+  SEXO: number;
+
+  @Field(() => Number, { nullable: true })
+  @Column("int")
   RACA: number;
 
   @Field(() => String, { nullable: true })

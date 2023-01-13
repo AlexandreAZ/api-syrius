@@ -15,9 +15,9 @@ export class AdotarController {
         .query(`SELECT A.*, 
                 B."AVATAR" AS "AAVATAR",
                 P."AVATAR" AS "PAVATAR" 
-                FROM "ONGADM"."ADOCAO" A
-                INNER JOIN  "ONGADM"."CADADOT" B ON A."ADOTANTE_ID" = B."ID"
-                INNER JOIN  "ONGADM"."CADPET" P ON A."PET_ID" = P."ID" `);
+                FROM "`+ request.body['diretorio']+`"."ADOCAO" A
+                INNER JOIN  "`+ request.body['diretorio']+`"."CADADOT" B ON A."ADOTANTE_ID" = B."ID"
+                INNER JOIN  "`+ request.body['diretorio']+`"."CADPET" P ON A."PET_ID" = P."ID" `);
         
         if (!resp || resp.length === 0) return [];
         return resp;

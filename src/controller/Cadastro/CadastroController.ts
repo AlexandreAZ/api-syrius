@@ -67,7 +67,7 @@ export class CadastroController {
 
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADPET" 
-                SET "ADOTADO" = 'ADOTADO'
+                SET "STATUS" = 'ADOTADO'
                 WHERE "ID" = ` + id)
         
         if (!resp || resp.length === 0) return { message: "Não foi possivel atualizar o PET" };
@@ -116,6 +116,7 @@ export class CadastroController {
             "MAE" = '`+dados['MAE']+`',
             "TIPO" = '`+dados['TIPO']+`',
             "RACA" = '`+dados['RACA']+`',
+            "SEXO" = '`+dados['SEXO']+`',
             "CASTRADO" = '`+dados['CASTRADO']+`',
             "NASCIMENTO" = '`+dados['NASCIMENTO']+`',
             "COR" = '`+dados['COR']+`',
@@ -135,6 +136,7 @@ export class CadastroController {
                     "MAE" = '`+dados['MAE']+`',
                     "TIPO" = '`+dados['TIPO']+`',
                     "RACA" = '`+dados['RACA']+`',
+                    "SEXO" = '`+dados['SEXO']+`',
                     "CASTRADO" = '`+dados['CASTRADO']+`',
                     "NASCIMENTO" = '`+dados['NASCIMENTO']+`',
                     "COR" = '`+dados['COR']+`',

@@ -141,6 +141,11 @@ export const Routes = [
         action: "getPets"  
 },{
     method: "post",
+        route: "/api/apps/pets",
+        controller: CadastroController,
+        action: "getPetsByStatus"  
+},{
+    method: "post",
         route: "/api/apps/pet/:id",
         controller: CadastroController,
         action: "getPetID"  
