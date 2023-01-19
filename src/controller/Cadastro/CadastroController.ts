@@ -61,13 +61,11 @@ export class CadastroController {
         var diretorio = request.body['diretorio'];
         this.cadastroRepository.metadata.tablePath = diretorio + ".CADPET"; 
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
-        
-
-        console.log(diretorio);
+        //console.log(diretorio);
 
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADPET" 
-                SET "STATUS" = 'ADOTADO'
+                SET "STATUS" = '` +request.body['status']+`'
                 WHERE "ID" = ` + id)
         
         if (!resp || resp.length === 0) return { message: "Não foi possivel atualizar o PET" };
@@ -78,6 +76,7 @@ export class CadastroController {
       } 
     }
 
+
     async upAvatar(request: Request, response: Response){
       try {
         var id = request.body['id'];
@@ -86,7 +85,7 @@ export class CadastroController {
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
         
 
-        console.log(diretorio);
+        //console.log(diretorio);
 
         /*var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADPET" 
@@ -109,7 +108,7 @@ export class CadastroController {
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
         //var resp = await this.cadastroRepository.save(dados);
 
-        console.log(`UPDATE "`+diretorio+`"."CADPET" 
+        /*console.log(`UPDATE "`+diretorio+`"."CADPET" 
         SET "AVATAR" = '`+dados['AVATAR']+`', 
             "NOME" = '`+dados['NOME']+`', 
             "PAI" = '`+dados['PAI']+`',
@@ -125,8 +124,9 @@ export class CadastroController {
             "PORTE" = '`+dados['PORTE']+`',
             "TEMPERAMENTO" = '`+dados['TEMPERAMENTO']+`',
             "FALECIDO" = '`+dados['FALECIDO']+`',
-            "ADOTADO" = '`+dados['ADOTADO']+`'
-        WHERE "ID" = ` + dados['ID']);
+            "ADOTADO" = '`+dados['ADOTADO']+`',
+            "STATUS" = (CASE WHEN '`+dados['ADOTADO']+`' = 'SIM' THEN 'ADOTADO' ELSE 'DISPONIVEL' END)
+        WHERE "ID" = ` + dados['ID']);*/
 
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADPET" 
@@ -145,7 +145,8 @@ export class CadastroController {
                     "PORTE" = '`+dados['PORTE']+`',
                     "TEMPERAMENTO" = '`+dados['TEMPERAMENTO']+`',
                     "FALECIDO" = '`+dados['FALECIDO']+`',
-                    "ADOTADO" = '`+dados['ADOTADO']+`'
+                    "ADOTADO" = '`+dados['ADOTADO']+`',
+                    "STATUS" = (CASE WHEN '`+dados['ADOTADO']+`' = 'SIM' THEN 'ADOTADO' ELSE 'DISPONIVEL' END)
                 WHERE "ID" = ` + dados['ID'])
 
          if(resp[1]==0){
@@ -161,7 +162,8 @@ export class CadastroController {
                  '`+dados['NASCIMENTO']+`', '`+dados['COR']+`',
                  '`+dados['OLHOS']+`', '`+dados['PELAGEM']+`',
                  '`+dados['PORTE']+`', '`+dados['TEMPERAMENTO']+`',
-                 '`+dados['FALECIDO']+`', '`+dados['ADOTADO']+`','DISPONIVEL')`
+                 '`+dados['FALECIDO']+`', '`+dados['ADOTADO']+`',
+                  (CASE WHEN '`+dados['ADOTADO']+`' = 'SIM' THEN 'ADOTADO' ELSE 'DISPONIVEL' END))`
 
           //console.log(sql)
 
@@ -180,7 +182,7 @@ export class CadastroController {
 
     async delPet(request: Request, response: Response){
       try {
-        console.log(request.params);
+        //console.log(request.params);
         var diretorio = request.params.diretorio;
         this.cadastroRepository.metadata.tablePath = diretorio + ".CADPET"; 
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;

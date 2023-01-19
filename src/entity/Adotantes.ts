@@ -56,4 +56,8 @@ export class Adotantes extends BaseEntity {
   @Field(() => String, { nullable: true })
   @Column("varchar", { length: 60 })
   EMAIL: string;
+
+  @Field(() => String, { nullable: true })
+  @Column("varchar", { length: 20 })
+  CPF: string;
 }

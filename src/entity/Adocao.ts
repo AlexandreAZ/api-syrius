@@ -36,4 +36,8 @@ export class Adocao extends BaseEntity {
   @Field(() => String, { nullable: true })
   @Column("varchar", { length: 60 })
   STATUS: string; 
+  
+  @Field(() => String, { nullable: true })
+  @Column("varchar")
+  ADOTANTE_ASS: string;
 }

@@ -25,9 +25,7 @@ export class AdotantesController {
       try {
         this.cadastroRepository.metadata.tablePath = request.body['diretorio'] + ".CADADOT";
         this.cadastroRepository.metadata.tableMetadataArgs.schema = request.body['diretorio'];
-
-
-        console.log(request.params);
+        //console.log(request.params);
         
         var resp = await this.cadastroRepository.findOneBy({ ID: parseInt(request.params.id)}); 
 
@@ -47,7 +45,7 @@ export class AdotantesController {
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
         //var resp = await this.cadastroRepository.save(dados);
 
-        console.log(dados)
+       // console.log(dados)
 
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADADOT" 
@@ -62,7 +60,8 @@ export class AdotantesController {
                     "BAIRRO" = '`+dados['BAIRRO']+`',
                     "UF" = '`+dados['UF']+`',
                     "NUMERO" = '`+dados['NUMERO']+`',
-                    "EMAIL" = '`+dados['EMAIL']+`'
+                    "EMAIL" = '`+dados['EMAIL']+`',
+                    "CPF" = '`+dados['CPF']+`'
                 WHERE "ID" = ` + dados['ID'])
 
          if(resp[1]==0){
@@ -70,13 +69,13 @@ export class AdotantesController {
           var resp = await this.cadastroRepository
           .query(`INSERT INTO "`+diretorio+`"."CADADOT"
           ("BACKGROUND", "AVATAR", "NOME", "TELEFONE", "CELULAR", "CEP", "ENDERECO", "CIDADE", 
-           "BAIRRO", "UF", "NUMERO", "EMAIL") 
+           "BAIRRO", "UF", "NUMERO", "EMAIL", "CPF") 
           VALUES ('`+dados['BACKGROUND']+`','`+dados['AVATAR']+`',
                   '`+dados['NOME']+`', '`+dados['TELEFONE']+`',
                   '`+dados['CELULAR']+`', '`+dados['CEP']+`',
                   '`+dados['ENDERECO']+`', '`+dados['CIDADE']+`', 
                   '`+dados['BAIRRO']+`','`+dados['UF']+`',
-                  '`+dados['NUMERO']+`', '`+dados['EMAIL']+`')`)
+                  '`+dados['NUMERO']+`', '`+dados['EMAIL']+`','`+dados['CPF']+`')`)
          } 
 
         resp = dados
@@ -91,7 +90,7 @@ export class AdotantesController {
 
     async delAdotante(request: Request, response: Response){
       try {
-        console.log(request.params);
+       // console.log(request.params);
         var diretorio = request.params.diretorio;
         this.cadastroRepository.metadata.tablePath = diretorio + ".CADADOT"; 
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;

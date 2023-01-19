@@ -47,7 +47,49 @@ export class AdotarController {
 
          resp = dados
 
-         console.log(resp)
+        if (!resp) return { message: "Não foi possivel atualizar  a adoção" };
+        return resp; 
+      } catch (error) {
+        console.log(error)
+        response.status(500).send(error);
+      } 
+    }
+
+    async upAdocaoAssA(request: Request, response: Response){
+      try {
+        var diretorio = request.body['diretorio'];
+        this.cadastroRepository.metadata.tablePath = diretorio + ".ADOCAO"; 
+        this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
+
+        var sql = `UPDATE "`+diretorio+`"."ADOCAO" 
+                    SET "ADOTANTE_ASS" = '`+ request.body['assinatura']+`'
+                    WHERE "ID" = ` +  request.body['id']
+         
+         var resp = await this.cadastroRepository.query(sql);
+
+         resp = request.body
+
+        if (!resp) return { message: "Não foi possivel atualizar  a adoção" };
+        return resp; 
+      } catch (error) {
+        console.log(error)
+        response.status(500).send(error);
+      } 
+    }
+
+    async upAdocaoAssOng(request: Request, response: Response){
+      try {
+        var diretorio = request.body['diretorio'];
+        this.cadastroRepository.metadata.tablePath = diretorio + ".ADOCAO"; 
+        this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
+
+        var sql = `UPDATE "`+diretorio+`"."ADOCAO" 
+                    SET "ONG_ASS" = '`+ request.body['assinatura']+`'
+                    WHERE "ID" = ` +  request.body['id']
+         
+         var resp = await this.cadastroRepository.query(sql);
+
+         resp = request.body
 
         if (!resp) return { message: "Não foi possivel atualizar  a adoção" };
         return resp; 
@@ -68,7 +110,8 @@ export class AdotarController {
             .delete()
             .from(Adocao)
             .where("ID = :id", { id: request.params.id })
-            .execute()
+            .execute();
+        
         if (!resp) return { message: "Não foi deletar a adoção" };
         return resp;
        } catch (error) {

@@ -302,6 +302,16 @@ export const Routes = [
         action: "upAdocao"  
 },{
     method: "post",
+    route: "/api/apps/adocao/ass",
+    controller: AdotarController,
+    action: "upAdocaoAssA"  
+},{
+    method: "post",
+    route: "/api/apps/adocao/ass/ong",
+    controller: AdotarController,
+    action: "upAdocaoAssOng"  
+},{
+    method: "post",
     route: "/api/apps/adocao/statuspet",
     controller: CadastroController,
     action: "upStatus"  
