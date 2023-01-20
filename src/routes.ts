@@ -1,4 +1,5 @@
 import { AdotarController } from "./controller/Adocao/AdotarController"
+import { OcorrenciasController } from "./controller/Adocao/OcorrenciasController"
 import { AuthController } from "./controller/AuthController"
 import { AdotantesController } from "./controller/Cadastro/AdotantesController"
 import { CadastroController } from "./controller/Cadastro/CadastroController"
@@ -320,5 +321,27 @@ export const Routes = [
     route: "/api/apps/cadastrapet/avatar",
     controller: CadastroController,
     action: "upAvatar"  
+},
+// OCORRENCIAS
+{
+    method: "post",
+    route: "/api/apps/ocorrencias",
+    controller: OcorrenciasController,
+    action: "getOcorrencias"  
+},{
+    method: "post",
+    route: "/api/apps/ocorrencias/ocorrencia/:id",
+    controller: OcorrenciasController,
+    action: "one"  
+},{
+    method: "patch",
+    route: "/api/apps/ocorrencias/ocorrencia/up",
+    controller: OcorrenciasController,
+    action: "upOcorrencia"  
+},{
+    method: "delete",
+    route: "/api/apps/ocorrencias/ocorrencia/del/:id/:diretorio",
+    controller: OcorrenciasController,
+    action: "delOcorrencia"  
 }
 ]
