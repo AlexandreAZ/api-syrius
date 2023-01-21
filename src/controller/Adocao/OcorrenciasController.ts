@@ -22,12 +22,14 @@ export class OcorrenciasController {
         } 
     }
 
-    async one(request: Request, response: Response) {
+    async adotante(request: Request, response: Response) {
         try {
           this.ocorrenciaRepository.metadata.tablePath = request.body['diretorio'] + ".OCORRENCIAS";
           this.ocorrenciaRepository.metadata.tableMetadataArgs.schema = request.body['diretorio'];
           
-          var resp = await this.ocorrenciaRepository.findOneBy({ ID: parseInt(request.params.id)}); 
+          var resp = await this.ocorrenciaRepository.findBy(
+            { ADOTANTE_ID: parseInt(request.params.id)}
+            ); 
   
           if (!resp) return { message: "Ocorrência não encontrada" };
           return resp;
@@ -43,24 +45,12 @@ export class OcorrenciasController {
           var diretorio = request.body['diretorio'];
           this.ocorrenciaRepository.metadata.tablePath = diretorio + ".OCORRENCIAS"; 
           this.ocorrenciaRepository.metadata.tableMetadataArgs.schema = diretorio;
-  
-          console.log(dados)
-  
+   
           var resp = await this.ocorrenciaRepository
-          .query(`UPDATE "`+diretorio+`"."OCORRENCIAS" 
-                  SET "MOTIVO" = '`+dados['MOTIVO']+`', 
-                      "DESCRICAO" = '`+dados['DESCRICAO']+`',
-                      "ADOTANTE_ID" = '`+dados['ADOTANTE_ID']+`'
-                  WHERE "ID" = ` + dados['ID'])
-  
-           if(resp[1]==0){
-  
-            var resp = await this.ocorrenciaRepository
-            .query(`INSERT INTO "`+diretorio+`"."OCORRENCIAS"
-                    ("MOTIVO", "DESCRICAO", "ADOTANTE_ID") 
-                    VALUES ('`+dados['MOTIVO']+`','`+dados['DESCRICAO']+`','`+dados['ADOTANTE_ID']+`')`)
-           } 
-  
+          .query(`INSERT INTO "`+diretorio+`"."OCORRENCIAS"
+                  ("MOTIVO", "DESCRICAO", "ADOTANTE_ID") 
+                  VALUES ('`+dados['MOTIVO']+`','`+dados['DESCRICAO']+`','`+dados['ADOTANTE_ID']+`')`)
+          
           resp = dados
           
           if (!resp || resp.length === 0) return { message: "Não foi possivel atualizar a Ocorrência" };
@@ -89,5 +79,20 @@ export class OcorrenciasController {
             console.log(error)
             response.status(500).send(error);
          }
+    }
+
+    async getMAxID(request: Request, response: Response){
+      try {
+       var diretorio = request.body['diretorio'];
+       this.ocorrenciaRepository.metadata.tablePath = diretorio + ".OCORRENCIAS"; 
+       this.ocorrenciaRepository.metadata.tableMetadataArgs.schema = diretorio;
+       var resp = await this.ocorrenciaRepository.
+       query(`SELECT MAX("ID") as maxid FROM "`+ diretorio +`"` + `.`+`"OCORRENCIAS"`);
+       if (!resp) return { message: "Não foi possivel buscar o MAXID das OCORRENCIAS" };
+       return resp;
+      } catch (error) {
+        console.log(error)
+        response.status(500).send(error);
       }
+   }
 }

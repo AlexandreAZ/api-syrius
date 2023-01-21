@@ -330,9 +330,9 @@ export const Routes = [
     action: "getOcorrencias"  
 },{
     method: "post",
-    route: "/api/apps/ocorrencias/ocorrencia/:id",
+    route: "/api/apps/ocorrencias/adotante/:id",
     controller: OcorrenciasController,
-    action: "one"  
+    action: "adotante"  
 },{
     method: "patch",
     route: "/api/apps/ocorrencias/ocorrencia/up",
@@ -343,5 +343,10 @@ export const Routes = [
     route: "/api/apps/ocorrencias/ocorrencia/del/:id/:diretorio",
     controller: OcorrenciasController,
     action: "delOcorrencia"  
+},{
+    method: "post",
+    route: "/api/apps/ocorrencias/maxid",
+    controller: OcorrenciasController,
+    action: "getMAxID"  
 }
 ]

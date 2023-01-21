@@ -127,7 +127,7 @@ export class AdotarController {
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
         var resp = await this.cadastroRepository.
         query(`SELECT MAX("ID") as maxid FROM "`+ diretorio +`"` + `.`+`"ADOCAO"`);
-        if (!resp) return { message: "Não foi possivel buscat o MAXID da adoção" };
+        if (!resp) return { message: "Não foi possivel buscar o MAXID da adoção" };
         return resp;
        } catch (error) {
          console.log(error)
