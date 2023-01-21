@@ -45,12 +45,11 @@ export class AdotantesController {
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
         //var resp = await this.cadastroRepository.save(dados);
 
-       // console.log(dados)
-
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADADOT" 
-                SET "AVATAR" = '`+dados['AVATAR']+`', 
-                    "NOME" = '`+dados['NOME']+`',
+                SET 
+                    "NOME" = '`+dados['NOME']+`',`
+                    +((dados['AVATAR']) ? `"AVATAR" = '`+dados['AVATAR']+`',`: `"AVATAR" = NULL,`)+`
                     "BACKGROUND" = '`+dados['BACKGROUND']+`',
                     "TELEFONE" = '`+dados['TELEFONE']+`',
                     "CELULAR" = '`+dados['CELULAR']+`',
@@ -70,7 +69,7 @@ export class AdotantesController {
           .query(`INSERT INTO "`+diretorio+`"."CADADOT"
           ("BACKGROUND", "AVATAR", "NOME", "TELEFONE", "CELULAR", "CEP", "ENDERECO", "CIDADE", 
            "BAIRRO", "UF", "NUMERO", "EMAIL", "CPF") 
-          VALUES ('`+dados['BACKGROUND']+`','`+dados['AVATAR']+`',
+          VALUES ('`+dados['BACKGROUND']+`',`+((dados['AVATAR']) ? `'`+dados['AVATAR']+`',`: null)+`,
                   '`+dados['NOME']+`', '`+dados['TELEFONE']+`',
                   '`+dados['CELULAR']+`', '`+dados['CEP']+`',
                   '`+dados['ENDERECO']+`', '`+dados['CIDADE']+`', 

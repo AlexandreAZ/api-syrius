@@ -9,9 +9,9 @@ export class Adotantes extends BaseEntity {
   @PrimaryColumn("int")
   ID: number;
 
-  @Field(() => Buffer)
-  @Column("bytea", { nullable: true })
-  AVATAR: Buffer;
+  @Field(() => String)
+  @Column("varchar", { nullable: true })
+  AVATAR: string;
 
   @Field(() => String, { nullable: true })
   @Column("varchar")

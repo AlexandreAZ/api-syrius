@@ -106,32 +106,13 @@ export class CadastroController {
         var diretorio = request.body['diretorio'];
         this.cadastroRepository.metadata.tablePath = diretorio + "."+ "CADPET"; 
         this.cadastroRepository.metadata.tableMetadataArgs.schema = diretorio;
-        //var resp = await this.cadastroRepository.save(dados);
-
-        /*console.log(`UPDATE "`+diretorio+`"."CADPET" 
-        SET "AVATAR" = '`+dados['AVATAR']+`', 
-            "NOME" = '`+dados['NOME']+`', 
-            "PAI" = '`+dados['PAI']+`',
-            "MAE" = '`+dados['MAE']+`',
-            "TIPO" = '`+dados['TIPO']+`',
-            "RACA" = '`+dados['RACA']+`',
-            "SEXO" = '`+dados['SEXO']+`',
-            "CASTRADO" = '`+dados['CASTRADO']+`',
-            "NASCIMENTO" = '`+dados['NASCIMENTO']+`',
-            "COR" = '`+dados['COR']+`',
-            "OLHOS" = '`+dados['OLHOS']+`',
-            "PELAGEM" = '`+dados['PELAGEM']+`',
-            "PORTE" = '`+dados['PORTE']+`',
-            "TEMPERAMENTO" = '`+dados['TEMPERAMENTO']+`',
-            "FALECIDO" = '`+dados['FALECIDO']+`',
-            "ADOTADO" = '`+dados['ADOTADO']+`',
-            "STATUS" = (CASE WHEN '`+dados['ADOTADO']+`' = 'SIM' THEN 'ADOTADO' ELSE 'DISPONIVEL' END)
-        WHERE "ID" = ` + dados['ID']);*/
-
+        
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADPET" 
-                SET "AVATAR" = '`+dados['AVATAR']+`', 
-                    "NOME" = '`+dados['NOME']+`', 
+                SET "NOME" = '`+dados['NOME']+`',`
+                    +((dados['AVATAR'])?`
+                    "AVATAR" = '`+dados['AVATAR']+`',
+                    `: `"AVATAR" = NULL,`)+` 
                     "PAI" = '`+dados['PAI']+`',
                     "MAE" = '`+dados['MAE']+`',
                     "TIPO" = '`+dados['TIPO']+`',
@@ -155,7 +136,7 @@ export class CadastroController {
          var sql = `INSERT INTO "`+diretorio+`"."CADPET"
          ("BACKGROUND", "AVATAR", "NOME", "PAI", "MAE", "TIPO", "RACA", "CASTRADO", "NASCIMENTO", 
            "COR", "OLHOS", "PELAGEM", "PORTE", "TEMPERAMENTO", "FALECIDO", "ADOTADO", "STATUS") 
-         VALUES ('`+dados['BACKGROUND']+`','`+dados['AVATAR']+`',
+         VALUES ('`+dados['BACKGROUND']+`',`+((dados['AVATAR']) ? `'`+dados['AVATAR']+`',`: null)+`,
                  '`+dados['NOME']+`','`+dados['PAI']+`',
                  '`+dados['MAE']+`', '`+dados['TIPO']+`',
                  '`+dados['RACA']+`', '`+dados['CASTRADO']+`',
