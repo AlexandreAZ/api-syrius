@@ -16,4 +16,32 @@ export class Estabelecimentos extends BaseEntity {
   @Field(() => String, { nullable: true })
   @Column("varchar")
   NOME: string;
+
+  @Field(() => String, { nullable: true })
+  @Column("varchar")
+  RESPONSAVEL: string;
+
+  @Field(() => String, { nullable: true })
+  @Column("varchar", { length: 100 })
+  CPFCNPJ: string; 
+
+  @Field(() => String, { nullable: true })
+  @Column("varchar", { length: 60 })
+  CEP: string; 
+
+  @Field(() => String, { nullable: true })
+  @Column("varchar", { length: 60 })
+  ENDERECO: string; 
+
+  @Field(() => String, { nullable: true })
+  @Column("varchar", { length: 60 })
+  CIDADE: string; 
+
+  @Field(() => String, { nullable: true })
+  @Column("varchar", { length: 60 })
+  BAIRRO: string; 
+
+  @Field(() => String, { nullable: true })
+  @Column("varchar", { length: 10 })
+  UF: string; 
 }

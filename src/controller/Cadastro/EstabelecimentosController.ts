@@ -34,15 +34,25 @@ export class EstabelecimentosController {
         var resp = await this.cadastroRepository
         .query(`UPDATE "`+diretorio+`"."CADEST" 
                 SET "NOME" = '`+dados['NOME']+`',
-                    "BACKGROUND" = '`+dados['BACKGROUND']+`'
+                    "RESPONSAVEL" = '`+dados['RESPONSAVEL']+`',
+                    "BACKGROUND" = '`+dados['BACKGROUND']+`',
+                    "CPFCNPJ" = '`+dados['CPFCNPJ']+`',
+                    "CEP" = '`+dados['CEP']+`',
+                    "ENDERECO" = '`+dados['ENDERECO']+`',
+                    "CIDADE" = '`+dados['CIDADE']+`',
+                    "BAIRRO" = '`+dados['BAIRRO']+`',
+                    "UF" = '`+dados['UF']+`'
                 WHERE "ID" = ` + dados['ID'])
 
          if(resp[1]==0){
 
           var resp = await this.cadastroRepository
           .query(`INSERT INTO "`+diretorio+`"."CADEST"
-                 ("BACKGROUND", "NOME") 
-                 VALUES ('`+dados['BACKGROUND']+`','`+dados['NOME']+`')`)
+                 ("BACKGROUND", "NOME", "RESPONSAVEL", "CPFCNPJ", "CEP", "ENDERECO", "CIDADE", "BAIRRO", "UF") 
+                 VALUES ('`+dados['BACKGROUND']+`','`+dados['NOME']+`','`+dados['RESPONSAVEL']+`',
+                 '`+dados['CPFCNPJ']+`','`+dados['CEP']+`',
+                 '`+dados['ENDERECO']+`','`+dados['CIDADE']+`', 
+                 '`+dados['BAIRRO']+`','`+dados['UF']+`')`)
          } 
 
         resp = dados
