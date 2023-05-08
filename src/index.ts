@@ -57,13 +57,13 @@ createConnection()
     const port = 3000;
 
     app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
-    //app.listen(port);
+    app.listen(port);
 
-    https.createServer({
+    /*https.createServer({
       cert: fs.readFileSync(path.join(__dirname, 'cert/certificate.crt')),
       key: fs.readFileSync(path.join(__dirname, 'cert/private.key'))
     }, 
-    app).listen(port);
+    app).listen(port);*/
 
     console.log(
       `O servidor foi iniciado na porta ${port}. Abra https://api.sistemasyrius.com.br:${port}${server.graphqlPath} para ver os resultados.`

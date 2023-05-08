@@ -10,6 +10,8 @@ import { SexosController } from "./controller/Cadastro/Conf/SexosController"
 import { TiposPetController } from "./controller/Cadastro/Conf/TiposPetController"
 import { EstabelecimentosController } from "./controller/Cadastro/EstabelecimentosController"
 import { ParceirosController } from "./controller/Cadastro/ParceirosController"
+import { ConfigController } from "./controller/ConfigController"
+import { ModuloController } from "./controller/ModuloController"
 import { UserController } from "./controller/UserController"
 
 export const Routes = [
@@ -348,5 +350,17 @@ export const Routes = [
     route: "/api/apps/ocorrencias/maxid",
     controller: OcorrenciasController,
     action: "getMAxID"  
-}
+},
+{
+    method: "get",
+    route: "/API/modulos/cliente/:cliente",
+    controller: ModuloController,
+    action: "cliente"
+},
+{
+    method: "get",
+    route: "/API/acessos/:id",
+    controller: ConfigController,
+    action: "acessos"
+},
 ]

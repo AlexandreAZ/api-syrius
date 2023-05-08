@@ -50,7 +50,7 @@ export class ParceirosController {
           var resp = await this.parceirosRepository
           .query(`INSERT INTO "`+diretorio+`"."CADPARC"
           ("BACKGROUND", "AVATAR", "NOME", "TELEFONE","CNPJ", "CEP", "ENDERECO", "CIDADE", "BAIRRO", "UF", "NUMERO") 
-          VALUES ('`+dados['BACKGROUND']+`',`+((dados['AVATAR']) ? `'`+dados['AVATAR']+`',`: null)+`,
+          VALUES ('`+dados['BACKGROUND']+`',`+((dados['AVATAR']) ? `'`+dados['AVATAR']+`'`: null)+`,
                   '`+dados['NOME']+`', '`+dados['TELEFONE']+`', '`+dados['CNPJ']+`', '`+dados['CEP']+`', 
                   '`+dados['ENDERECO']+`','`+dados['CIDADE']+`', '`+dados['BAIRRO']+`','`+dados['UF']+`',
                   '`+dados['NUMERO']+`')`)

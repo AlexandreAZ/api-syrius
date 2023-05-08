@@ -136,7 +136,7 @@ export class CadastroController {
          var sql = `INSERT INTO "`+diretorio+`"."CADPET"
          ("BACKGROUND", "AVATAR", "NOME", "PAI", "MAE", "TIPO", "RACA", "CASTRADO", "NASCIMENTO", 
            "COR", "OLHOS", "PELAGEM", "PORTE", "TEMPERAMENTO", "FALECIDO", "ADOTADO", "STATUS") 
-         VALUES ('`+dados['BACKGROUND']+`',`+((dados['AVATAR']) ? `'`+dados['AVATAR']+`',`: null)+`,
+         VALUES ('`+dados['BACKGROUND']+`',`+((dados['AVATAR']) ? `'`+dados['AVATAR']+`'`: null)+`,
                  '`+dados['NOME']+`','`+dados['PAI']+`',
                  '`+dados['MAE']+`', '`+dados['TIPO']+`',
                  '`+dados['RACA']+`', '`+dados['CASTRADO']+`',

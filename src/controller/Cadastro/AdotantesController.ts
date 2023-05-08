@@ -69,7 +69,7 @@ export class AdotantesController {
           .query(`INSERT INTO "`+diretorio+`"."CADADOT"
           ("BACKGROUND", "AVATAR", "NOME", "TELEFONE", "CELULAR", "CEP", "ENDERECO", "CIDADE", 
            "BAIRRO", "UF", "NUMERO", "EMAIL", "CPF") 
-          VALUES ('`+dados['BACKGROUND']+`',`+((dados['AVATAR']) ? `'`+dados['AVATAR']+`',`: null)+`,
+          VALUES ('`+dados['BACKGROUND']+`',`+((dados['AVATAR']) ? `'`+dados['AVATAR']+`'`: null)+`,
                   '`+dados['NOME']+`', '`+dados['TELEFONE']+`',
                   '`+dados['CELULAR']+`', '`+dados['CEP']+`',
                   '`+dados['ENDERECO']+`', '`+dados['CIDADE']+`', 
