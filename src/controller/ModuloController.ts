@@ -76,14 +76,92 @@ export class ModuloController {
 
   loadOdonto(){
     this.default.push(
-    {
-      id      : 'odonto',
-      title   : 'ODONTO',
-      subtitle: 'Controle odonto',
-      type    : 'group',
-      icon    : 'iconsmind:cat',
-      children: []
-    });
+      {
+        id      : 'odonto',
+        title   : 'ODONTO',
+        subtitle: 'Controle odonto',
+        type    : 'group',
+        icon    : 'iconsmind:bacteria',
+        children:  [{
+          id      : 'cadastros',
+          title   : 'Cadastros',
+          subtitle: 'Cadastros gerais',
+          type    : 'collapsable',
+          icon    : 'person',
+          children: [
+            {
+              id   : 'cadastro.paciente',
+              title: 'Paciente',
+              type : 'basic',
+              link : '/odonto/cadastro/paciente'
+            },
+            {
+              id   : 'cadastro.fornecedores',
+              title: 'Fornecedores',
+              type : 'basic',
+              link : '/odonto/cadastro/fornecedores'
+            },
+            {
+              id   : 'cadastro.medicamentos',
+              title: 'Medicamentos/Produtos',
+              type : 'basic',
+              link : '/odonto/cadastro/medicamentos'
+            },
+            {
+              id   : 'cadastro.anamnese',
+              title: 'Anamnese',
+              type : 'basic',
+              link : '/odonto/cadastro/anamnese'
+            },
+            {
+              id   : 'cadastro.convenios',
+              title: 'Convênios',
+              type : 'basic',
+              link : '/odonto/cadastro/convenios'
+            },
+            {
+              id   : 'cadastro.especialidades',
+              title: 'Especialidades',
+              type : 'basic',
+              link : '/odonto/cadastro/especialidades'
+            },
+            {
+              id   : 'cadastro.profissional',
+              title: 'Profissional',
+              type : 'basic',
+              link : '/odonto/cadastro/profissional'
+            },
+            {
+              id   : 'cadastro.receituario',
+              title: 'Receituário',
+              type : 'basic',
+              link : '/odonto/cadastro/receituario'
+            }
+          ]
+          },
+          {
+            id      : 'prontuario',
+            title   : 'Prontuário', 
+            type    : 'basic',
+            icon    : 'mat_solid:post_add',
+            link : '/odonto/prontuario'
+          },
+          {
+            id      : 'estoque',
+            title   : 'Estoque', 
+            type    : 'basic',
+            icon    : 'mat_outline:production_quantity_limits',
+            link : '/odonto/estoque'
+          },
+          {
+            id      : 'relatorios',
+            title   : 'Relatórios', 
+            type    : 'basic',
+            icon    : 'mat_solid:insert_chart_outlined',
+            link : '/odonto/relatorios'
+          }
+        ]
+      });
 
     this.horizontal.push(
     {
@@ -91,8 +169,86 @@ export class ModuloController {
       title   : 'ODONTO',
       subtitle: 'Controle odonto',
       type    : 'group',
-      icon    : 'iconsmind:cat',
-      children: []
+      icon    : 'iconsmind:bacteria',
+      children:  [{
+        id      : 'cadastros',
+        title   : 'Cadastros',
+        subtitle: 'Cadastros gerais',
+        type    : 'collapsable',
+        icon    : 'person',
+        children: [
+          {
+            id   : 'cadastro.paciente',
+            title: 'Paciente',
+            type : 'basic',
+            link : '/odonto/cadastro/paciente'
+          },
+          {
+            id   : 'cadastro.fornecedores',
+            title: 'Fornecedores',
+            type : 'basic',
+            link : '/odonto/cadastro/fornecedores'
+          },
+          {
+            id   : 'cadastro.medicamentos',
+            title: 'Medicamentos/Produtos',
+            type : 'basic',
+            link : '/odonto/cadastro/medicamentos'
+          },
+          {
+            id   : 'cadastro.anamnese',
+            title: 'Anamnese',
+            type : 'basic',
+            link : '/odonto/cadastro/anamnese'
+          },
+          {
+            id   : 'cadastro.convenios',
+            title: 'Convênios',
+            type : 'basic',
+            link : '/odonto/cadastro/convenios'
+          },
+          {
+            id   : 'cadastro.especialidades',
+            title: 'Especialidades',
+            type : 'basic',
+            link : '/odonto/cadastro/especialidades'
+          },
+          {
+            id   : 'cadastro.profissional',
+            title: 'Profissional',
+            type : 'basic',
+            link : '/odonto/cadastro/profissional'
+          },
+          {
+            id   : 'cadastro.receituario',
+            title: 'Receituário',
+            type : 'basic',
+            link : '/odonto/cadastro/receituario'
+          }
+        ]
+        },
+        {
+          id      : 'prontuario',
+          title   : 'Prontuário', 
+          type    : 'basic',
+          icon    : 'mat_solid:post_add',
+          link : '/odonto/prontuario'
+        },
+        {
+          id      : 'estoque',
+          title   : 'Estoque', 
+          type    : 'basic',
+          icon    : 'mat_outline:production_quantity_limits',
+          link : '/odonto/estoque'
+        },
+        {
+          id      : 'relatorios',
+          title   : 'Relatórios', 
+          type    : 'basic',
+          icon    : 'mat_solid:insert_chart_outlined',
+          link : '/odonto/relatorios'
+        }
+      ]
     });
 
     this.compact.push(
@@ -101,8 +257,23 @@ export class ModuloController {
       title   : 'ODONTO',
       subtitle: 'Controle odonto',
       type    : 'group',
-      icon    : 'iconsmind:cat',
-      children: []
+      icon    : 'iconsmind:bacteria',
+      children:  [{
+        id      : 'cadastros',
+        title   : 'Cadastros',
+        subtitle: 'Cadastros gerais',
+        type    : 'collapsable',
+        icon    : 'person',
+        children: []
+        },
+        {
+          id      : 'prontuario',
+          title   : 'Prontuário',
+          subtitle: '',
+          type    : 'collapsable',
+          icon    : 'mat_outline:attribution',
+          children: []
+        }]
     });
 
     this.futuristic.push(
@@ -111,8 +282,23 @@ export class ModuloController {
       title   : 'ODONTO',
       subtitle: 'Controle odonto',
       type    : 'group',
-      icon    : 'iconsmind:cat',
-      children: []
+      icon    : 'iconsmind:bacteria',
+      children:  [{
+        id      : 'cadastros',
+        title   : 'Cadastros',
+        subtitle: 'Cadastros gerais',
+        type    : 'collapsable',
+        icon    : 'material:person',
+        children: []
+        },
+        {
+          id      : 'prontuario',
+          title   : 'Prontuário',
+          subtitle: '',
+          type    : 'collapsable',
+          icon    : 'mat_outline:attribution',
+          children: []
+        }] 
     });
   }
 
@@ -123,7 +309,7 @@ export class ModuloController {
       title   : 'ADOTAPET',
       subtitle: 'Controle de adoção',
       type    : 'group',
-      icon    : 'iconsmind:cat',
+      icon    : 'iconsmind:bacteria',
       children: [{
         id      : 'cadastros',
         title   : 'Cadastros',
@@ -181,14 +367,14 @@ export class ModuloController {
       title   : 'ADOTAPET',
       subtitle: 'Controle de adoção',
       type    : 'group',
-      icon    : 'iconsmind:cat',
+      icon    : 'iconsmind:bacteria',
       children: [
         {
             id      : 'cadastros',
             title   : 'Cadastros',
             subtitle: 'Cadastros gerais',
             type    : 'collapsable',
-            icon    : 'iconsmind:cat',
+            icon    : 'iconsmind:bacteria',
             children: [
                 {
                     id   : 'cadastro.pet',
@@ -241,7 +427,7 @@ export class ModuloController {
       title   : 'ADOTAPET',
       subtitle: 'Controle de adoção',
       type    : 'group',
-      icon    : 'iconsmind:cat',
+      icon    : 'iconsmind:bacteria',
       children: []
     }); 
 
@@ -251,7 +437,7 @@ export class ModuloController {
       title   : 'ADOTAPET',
       subtitle: 'Controle de adoção',
       type    : 'group',
-      icon    : 'iconsmind:cat',
+      icon    : 'iconsmind:bacteria',
       children: []
     });  
   }
@@ -267,6 +453,62 @@ export class ModuloController {
     };
   }
 
+  loadFinanceiro(){
+    this.horizontal.push(
+      {
+        id      : 'financeiro',
+        title   : 'FINANCEIRO',
+        subtitle: 'Controle financeiro',
+        type    : 'group',
+        icon    : 'mat_solid:attach_money',
+        children:  [
+          {
+            id      : 'financeiro.cadastros',
+            title   : 'Cadastros',
+            subtitle: 'Cadastros gerais',
+            type    : 'collapsable',
+            icon    : 'edit',
+            children: [
+                {
+                    id   : 'financeiro.planoContas',
+                    title: 'Plano de contas',
+                    type : 'basic',
+                    link : '/financeiro/cadastro/planocontas'
+                }
+              ]
+            },
+          {
+            id   : 'financeiro.contas_receber',
+            title: 'Contas a Receber',
+            type : 'basic',
+            icon : 'mat_solid:trending_up',
+            link : '/financeiro/receber'
+          },
+          {
+            id   : 'financeiro.contas_pagar',
+            title: 'Contas a Pagar',
+            type : 'basic',
+            icon : 'mat_solid:trending_down',
+            link : '/financeiro/pagar'
+          },
+          {
+            id   : 'financeiro.caixa',
+            title: 'Fluxo de caixa',
+            type : 'basic',
+            icon : 'attach_money',
+            link : '/financeiro/caixa'
+          },
+          {
+            id      : 'relatorios',
+            title   : 'Relatórios', 
+            type    : 'basic',
+            icon    : 'mat_solid:insert_chart_outlined',
+            link : '/financeiro/relatorios'
+          }
+        ]
+      })
+  }
+
   async cliente(request: Request,  response: Response) { 
     try {
       
@@ -277,9 +519,7 @@ export class ModuloController {
  
       var resp = {}; 
 
-      modulos.forEach(async element => {
-
-        console.log(element['ENABLED'])
+      modulos.forEach(async element => { 
 
         if(element['NOME'] == 'ADOTAPET' && element['ENABLED'] == 1){ 
           this.loadAdotapet();  
@@ -292,6 +532,8 @@ export class ModuloController {
         } 
       }); 
 
+      this.loadFinanceiro();
+
       this.loadConfiguracoes(); 
       this.horizontal.push(this.configuracoes);
       this.default.push(this.configuracoes);
@@ -303,8 +545,7 @@ export class ModuloController {
          futuristic: this.futuristic
       };
 
-      resp = this.modulos;  
-      console.log(resp);
+      resp = this.modulos;   
  
       if (!resp) return { message: "Modulo não encontrado." };
       return resp;

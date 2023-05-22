@@ -12,6 +12,7 @@ import { Routes } from "./routes";
 import { Resolvers } from "./resolvers"; 
 
 import bodyParser = require("body-parser");
+import { checkJwt } from "./middlewares/checkJwt";
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger_output.json"); 
 const path = require('path')
@@ -24,8 +25,7 @@ createConnection()
     app.use(bodyParser.json({limit: '100mb'}));
     app.use(bodyParser.urlencoded({limit: '100mb', extended: true}));
     app.options('*', cors());
-
-
+ 
     const schema = await buildSchema({
       resolvers: Resolvers as NonEmptyArray<Function>, // add this
     });
@@ -36,6 +36,7 @@ createConnection()
     Routes.forEach((route) => {
       (app as any)[route.method](
         route.route,
+        checkJwt,
         (req: Request, res: Response, next: Function) => {
           const result = new (route.controller as any)()[route.action](
             req,
@@ -66,7 +67,7 @@ createConnection()
     app).listen(port);*/
 
     console.log(
-      `O servidor foi iniciado na porta ${port}. Abra https://api.sistemasyrius.com.br:${port}${server.graphqlPath} para ver os resultados.`
+      `O servidor foi iniciado na porta ${port}. Abra https://localhost:${port}${server.graphqlPath} para ver os resultados.`
     );
   })
   .catch((error) => console.log(error));

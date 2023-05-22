@@ -7,12 +7,15 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   let jwtPayload;
   try {
     
-     jwtPayload = <any>(
-      jwt.verify(token.replace("Bearer ", ""), config.jwtSecret)
-    );
+     if(req.url != '/API/login'){
+      jwtPayload = <any>(
+        jwt.verify(token.replace("Bearer ", ""), config.jwtSecret)
+      );
+     }
+    
     res.locals.jwtPayload = jwtPayload;  
   } catch (error) {
-    res.status(401).send({message: error});
+    res.status(401).send({message:' Sem autorização pra usar API'});
     return;
   }
   next();

@@ -39,12 +39,14 @@ export class AuthController {
           }
           if (resultado && user.ENABLED === 1 && user.TYPE === 0) {
             const token = await this._generateJWTToken();
+            const modulos = await this.getModulos(dir);
             return [
                   200,
                   {
                       user       : user,
                       username   : username,
                       accessToken: token,
+                      modulos: modulos,
                       tokenType  : 'bearer'
                   }
               ];
@@ -65,6 +67,10 @@ export class AuthController {
     }
   }
 
+  async getModulos(dir: any){ 
+    var m = await this.authRepository.query('SELECT * FROM "'+dir+'"."MODULOS"')
+    return m;
+  }
 
   getSecondPart(str) {
     return str.split('@')[1].toUpperCase();
@@ -119,7 +125,7 @@ export class AuthController {
           user = await this.authRepository.findOne({
             where: { USERNAME: nome },
           });
-
+          const modulos = await this.getModulos(dir);
           // Verify the token
           if ( this._verifyJWTToken(accessToken) )
           {
@@ -129,6 +135,7 @@ export class AuthController {
                       user       : user,
                       username   : username,
                       accessToken: this._generateJWTToken(),
+                      modulos: modulos,
                       tokenType  : 'bearer'
                   }
               ];
