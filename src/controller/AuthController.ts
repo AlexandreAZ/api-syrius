@@ -40,13 +40,15 @@ export class AuthController {
           if (resultado && user.ENABLED === 1 && user.TYPE === 0) {
             const token = await this._generateJWTToken();
             const modulos = await this.getModulos(dir);
+            const empresa = await this.getEmpresaLogada(user['ID_EMPRESA'], dir);
             return [
                   200,
                   {
                       user       : user,
+                      empresa    : empresa,
                       username   : username,
                       accessToken: token,
-                      modulos: modulos,
+                      modulos    : modulos,
                       tokenType  : 'bearer'
                   }
               ];
@@ -65,6 +67,49 @@ export class AuthController {
               .status(401)
               .send({ message: "Cliente não encontrado." });
     }
+  }
+
+  async atualizaSenha(request: Request, response: Response){ 
+    try { 
+      var diretorio = request.body['diretorio']; 
+      var dados = request.body['dados']; 
+      var usuario = request.body['usuario'];
+     
+      var user;
+      var dir = diretorio;
+
+      this.authRepository.metadata.tablePath = dir + "." + "USERS"; 
+      this.authRepository.metadata.tableMetadataArgs.schema = dir 
+
+      user = await this.authRepository.findOne({
+        where: { ID: usuario },
+      }); 
+
+      let resultado; 
+
+      if (user.PASSWORD === this.encSenha(dados['currentPassword'])) {
+        resultado = true;
+        // ALTERAR SENHA 
+        this.authRepository.query(`UPDATE "`+dir+`"."USERS"
+                                   SET "PASSWORD" = `+this.encSenha(dados['newPassword']));
+
+        return { message: "Senha alterada com sucesso." };
+      } else {
+        resultado = false; 
+        return { message: "Senha atual não confere." };
+      }
+
+    } catch (error) {
+      response
+      .status(401)
+      .send({ message: "Não foi possível atualizar a senha." });
+    }
+
+  }
+
+  async getEmpresaLogada(id: any, dir: any){
+    var empresaLogada = await this.authRepository.query('SELECT * FROM "'+dir+'"."EMPRESAS" WHERE "ID" = ' + id)
+    return empresaLogada;
   }
 
   async getModulos(dir: any){ 
@@ -126,6 +171,7 @@ export class AuthController {
             where: { USERNAME: nome },
           });
           const modulos = await this.getModulos(dir);
+          const empresa = await this.getEmpresaLogada(user['ID_EMPRESA'], dir);
           // Verify the token
           if ( this._verifyJWTToken(accessToken) )
           {
@@ -133,6 +179,7 @@ export class AuthController {
                   200,
                   {
                       user       : user,
+                      empresa    : empresa,
                       username   : username,
                       accessToken: this._generateJWTToken(),
                       modulos: modulos,

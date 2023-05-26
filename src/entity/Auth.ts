@@ -37,6 +37,10 @@ export class Auth extends BaseEntity {
   @Field(() => Date)
   @Column({ type: "date" })
   UPDATED: Date;
+
+  @Field(() => Number)
+  @Column("int")
+  ID_EMPRESA: number;
 }
 
 @ObjectType()

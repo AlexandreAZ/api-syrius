@@ -34,7 +34,5 @@ export class ConfigController {
             .status(401)
             .send({ message: "Quantidade de acessos." });
           }
-    }
-
-
+    } 
 }

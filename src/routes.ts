@@ -29,16 +29,16 @@ export const Routes = [
     action: "he"
 },
 {
-    method: "get",
-    route: "/users",
+    method: "post",
+    route: "/api/usuarios",
     controller: UserController,
     action: "all"
 }, 
 {
     method: "get",
-    route: "/users/:id",
+    route: "/api/usuarios",
     controller: UserController,
-    action: "one"
+    action: "oneId"
 }, 
 {
     method: "post",
@@ -47,8 +47,32 @@ export const Routes = [
     action: "one"
 }, 
 {
+    method: "post",
+    route: "/api/usuario/add",
+    controller: UserController,
+    action: "add"
+}, 
+{
+    method: "post",
+    route: "/api/usuario/tipo",
+    controller: UserController,
+    action: "updateType"
+}, 
+{
+    method: "post",
+    route: "/api/usuario/senha",
+    controller: AuthController,
+    action: "atualizaSenha"
+},
+{
     method: "delete",
     route: "/users/:id",
+    controller: UserController,
+    action: "remove"
+},
+{
+    method: "delete",
+    route: "/api/usuario/del/:id/:diretorio",
     controller: UserController,
     action: "remove"
 },
